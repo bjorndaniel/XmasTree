@@ -13,7 +13,4 @@
     <PackageReference Include="Bifrost.Devices.Gpio.Abstractions" Version="0.0.1" />
     <PackageReference Include="Bifrost.Devices.Gpio.Core" Version="0.0.1" />
 </ItemGroup>
-<ItemGroup>
-  <ProjectReference Include="..\..\Prototyping\Ooui\Ooui.Forms\Ooui.Forms.csproj" />
-</ItemGroup>
 </Project>
