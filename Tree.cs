@@ -27,23 +27,13 @@ namespace XmasTree
 
         private Ooui.Element CreateTree()
         {
-            _gpioController = Bifrost.Devices.Gpio.GpioController.Instance;
+            _gpioController = Bifrost.Devices.Gpio.GpioController.DevicePath == null ? new FakeGpioController() : Bifrost.Devices.Gpio.GpioController.Instance ;
             var layout = new StackLayout
             {
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
-                Margin = 25,
-                WidthRequest = 500
             };
-            var sw = new Switch
-            {
-                ClassId = TreeLight.STAR.ToString(),
-                HeightRequest = 50,
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
-                Margin = new Thickness(0, 0, 0, 50)
-            };
-            sw.Toggled += Sw_Toggled;
-            Switches.Add(sw);
-            layout.Children.Add(sw);
+           
+            layout.Children.Add(CreateSwitch(GetName(0)));
             layout.Children.Add(CreateGrid());
             var button = new Xamarin.Forms.Button
             {
@@ -66,9 +56,6 @@ namespace XmasTree
             return new ContentPage
             {
                 Content = layout,
-                WidthRequest = 1000,
-                HeightRequest = 1200
-
             }.GetOouiElement();
         }
 
@@ -134,9 +121,7 @@ namespace XmasTree
         {
             var grid = new Grid
             {
-                WidthRequest = 500,
-                MinimumHeightRequest = 800,
-                Margin = new Thickness(10),
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
                 RowDefinitions = new RowDefinitionCollection
                 {
                     new RowDefinition{Height = GridLength.Auto},
@@ -152,20 +137,13 @@ namespace XmasTree
                     new ColumnDefinition{Width = GridLength.Auto}
                 }
             };
-
-            Switch sw;
             var counter = 1;
             for (var row = 0; row < 6; row++)
             {
                 for (var column = 0; column < 4; column++)
                 {
-                    sw = new Switch
-                    {
-                        ClassId = GetName(counter)
-                    };
-                    sw.Toggled += Sw_Toggled;
-                    grid.Children.Add(sw, column, row);
-                    Switches.Add(sw);
+                   
+                    grid.Children.Add(CreateSwitch(GetName(counter)), column, row);
                     counter++;
                 }
 
@@ -270,6 +248,30 @@ namespace XmasTree
                     pin.Write(GpioPinValue.Low);
                 }
             }
+        }
+
+        private StackLayout CreateSwitch(string name)
+        {
+             var sw = new Switch
+            {
+                ClassId = TreeLight.STAR.ToString(),
+                HorizontalOptions = LayoutOptions.CenterAndExpand
+            };
+            sw.Toggled += Sw_Toggled;
+            Switches.Add(sw);
+            return new StackLayout
+            {
+                Children = 
+                {
+                    new Xamarin.Forms.Label
+                    {
+                        Text = name,
+                        HorizontalOptions = LayoutOptions.CenterAndExpand,
+                        HorizontalTextAlignment = TextAlignment.Center
+                    },
+                    sw
+                }
+            };
         }
     }
 }

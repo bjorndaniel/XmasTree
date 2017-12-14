@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27128.1
+VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XmasTree", "XmasTree.csproj", "{FFC74F3C-7E46-4077-B72C-1A72F242E0AC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ooui.Forms", "..\..\..\Prototyping\Ooui\Ooui.Forms\Ooui.Forms.csproj", "{EEDB6B74-499F-4496-A6E7-8CA69F7537C8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ooui", "..\..\..\Prototyping\Ooui\Ooui\Ooui.csproj", "{C1D56C69-6454-414C-8202-ADCF1D671A18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,30 @@ Global
 		{FFC74F3C-7E46-4077-B72C-1A72F242E0AC}.Release|x64.Build.0 = Release|Any CPU
 		{FFC74F3C-7E46-4077-B72C-1A72F242E0AC}.Release|x86.ActiveCfg = Release|Any CPU
 		{FFC74F3C-7E46-4077-B72C-1A72F242E0AC}.Release|x86.Build.0 = Release|Any CPU
+		{EEDB6B74-499F-4496-A6E7-8CA69F7537C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEDB6B74-499F-4496-A6E7-8CA69F7537C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEDB6B74-499F-4496-A6E7-8CA69F7537C8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EEDB6B74-499F-4496-A6E7-8CA69F7537C8}.Debug|x64.Build.0 = Debug|Any CPU
+		{EEDB6B74-499F-4496-A6E7-8CA69F7537C8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EEDB6B74-499F-4496-A6E7-8CA69F7537C8}.Debug|x86.Build.0 = Debug|Any CPU
+		{EEDB6B74-499F-4496-A6E7-8CA69F7537C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEDB6B74-499F-4496-A6E7-8CA69F7537C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEDB6B74-499F-4496-A6E7-8CA69F7537C8}.Release|x64.ActiveCfg = Release|Any CPU
+		{EEDB6B74-499F-4496-A6E7-8CA69F7537C8}.Release|x64.Build.0 = Release|Any CPU
+		{EEDB6B74-499F-4496-A6E7-8CA69F7537C8}.Release|x86.ActiveCfg = Release|Any CPU
+		{EEDB6B74-499F-4496-A6E7-8CA69F7537C8}.Release|x86.Build.0 = Release|Any CPU
+		{C1D56C69-6454-414C-8202-ADCF1D671A18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1D56C69-6454-414C-8202-ADCF1D671A18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1D56C69-6454-414C-8202-ADCF1D671A18}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C1D56C69-6454-414C-8202-ADCF1D671A18}.Debug|x64.Build.0 = Debug|Any CPU
+		{C1D56C69-6454-414C-8202-ADCF1D671A18}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C1D56C69-6454-414C-8202-ADCF1D671A18}.Debug|x86.Build.0 = Debug|Any CPU
+		{C1D56C69-6454-414C-8202-ADCF1D671A18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1D56C69-6454-414C-8202-ADCF1D671A18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1D56C69-6454-414C-8202-ADCF1D671A18}.Release|x64.ActiveCfg = Release|Any CPU
+		{C1D56C69-6454-414C-8202-ADCF1D671A18}.Release|x64.Build.0 = Release|Any CPU
+		{C1D56C69-6454-414C-8202-ADCF1D671A18}.Release|x86.ActiveCfg = Release|Any CPU
+		{C1D56C69-6454-414C-8202-ADCF1D671A18}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
