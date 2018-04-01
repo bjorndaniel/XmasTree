@@ -8,7 +8,9 @@
     <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="2.0.0" />
   </ItemGroup>
 <ItemGroup>
-  <PackageReference Include="Unosquare.Raspberry.IO" Version="0.12.0" />
+  <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  <PackageReference Include="Ooui.Forms" Version="0.9.206" />
+  <PackageReference Include="Unosquare.Raspberry.IO" Version="0.13.0" />
     <PackageReference Include="Bifrost.Devices.Gpio" Version="0.0.2" />
     <PackageReference Include="Bifrost.Devices.Gpio.Abstractions" Version="0.0.1" />
     <PackageReference Include="Bifrost.Devices.Gpio.Core" Version="0.0.1" />
@@ -17,7 +19,6 @@
   <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="2.0.0" />
 </ItemGroup>
 <ItemGroup>
-  <ProjectReference Include="..\..\..\Prototyping\Ooui\Ooui.Forms\Ooui.Forms.csproj" />
-  <ProjectReference Include="..\..\..\Prototyping\Ooui\Ooui\Ooui.csproj" />
+  <ProjectReference Include="..\XmasTree.Common\XmasTree.Common.csproj" />
 </ItemGroup>
 </Project>

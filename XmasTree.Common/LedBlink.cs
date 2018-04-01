@@ -1,4 +1,4 @@
-﻿namespace XmasTree
+﻿namespace XmasTree.Common
 {
     public class LedBlink
     {

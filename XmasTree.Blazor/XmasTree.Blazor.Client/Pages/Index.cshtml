@@ -1,0 +1,83 @@
+﻿@page "/"
+@using System.Collections.Generic
+@using XmasTree.Common
+@inject HttpClient Http
+<div class="row">
+    <div class="col-lg-12 text-center">
+        <h1>Blazor tree</h1>
+    </div>
+</div>
+<div class="row ">
+    <div class="col-sm-12 text-center ">
+        <ul class="tg-list">
+            <li class="tg-list-item">
+                <h4>@TreeLight.STAR.GetDisplayName()</h4>
+                <input class="tgl tgl-light" id="@((int)TreeLight.STAR)" type="checkbox" @bind(Star.IsOn) />
+                <label class="tgl-btn" for="@((int)TreeLight.STAR)"></label>
+            </li>
+        </ul>
+    </div>
+</div>
+@{
+    var counter = 1;
+    for (var row = 0; row < 6; row++)
+    {
+        <div class="row">
+            @for (var column = 0; column < 4; column++)
+            {
+                var pin = GetLed(counter);
+                <div class="col-sm-3 ">
+                    <ul class="tg-list">
+                        <li class="tg-list-item">
+                            <h4>@(pin.GpioPin.GetDisplayName())</h4>
+                            <input class="tgl tgl-light" id="@((int)pin.GpioPin)" type="checkbox" @bind(pin.IsOn) />
+                            <label class="tgl-btn" for="@((int)pin.GpioPin)"></label>
+                        </li>
+                    </ul>
+                </div>
+                counter++;
+            }
+        </div>
+    }
+}
+        <br />
+<div class="row">
+    <div class="col-sm-12 text-center">
+        <button class="btn btn-success" @onclick(async ()=> await Update())>Update</button>
+    </div>
+</div>
+
+@functions
+{
+    public List<LedBlink> Leds { get; set; } = new List<LedBlink>();
+    public LedBlink Star => Leds.First(_ => _.GpioPin == TreeLight.STAR);
+    public LedBlink GetLed(int counter) => Leds.First(_ => _.GpioPin == Utilities.GetLight(counter));
+
+    List<LedBlink> CreateLeds()
+        {
+            var retVal = new List<LedBlink>
+    ();
+    foreach (var pin in Enum.GetValues(typeof(TreeLight)))
+    {
+    retVal.Add(new LedBlink
+    {
+    GpioPin = (TreeLight) pin
+    });
+    }
+    return retVal;
+    }
+
+    async Task Update()
+    {
+    foreach (var l in Leds.Where(_ => _.IsOn))
+    {
+    Console.WriteLine($"Gpiopin {l.GpioPin} is {l.IsOn}");
+    }
+    await Http.PostAsync("/api/Tree/Update", Utilities.GetJsonAsStringContent(Leds.Where(_ => _.IsOn)));
+    }
+
+    protected override void OnInit()
+    {
+    Leds = CreateLeds();
+    }
+    }
