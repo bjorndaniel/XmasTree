@@ -40,7 +40,7 @@
         </div>
     }
 }
-        <br />
+<br />
 <div class="row">
     <div class="col-sm-12 text-center">
         <button class="btn btn-success" @onclick(async ()=> await Update())>Update</button>
@@ -54,30 +54,29 @@
     public LedBlink GetLed(int counter) => Leds.First(_ => _.GpioPin == Utilities.GetLight(counter));
 
     List<LedBlink> CreateLeds()
+    {
+        var retVal = new List<LedBlink>();
+        foreach (var pin in Enum.GetValues(typeof(TreeLight)))
         {
-            var retVal = new List<LedBlink>
-    ();
-    foreach (var pin in Enum.GetValues(typeof(TreeLight)))
-    {
-    retVal.Add(new LedBlink
-    {
-    GpioPin = (TreeLight) pin
-    });
-    }
-    return retVal;
+            retVal.Add(new LedBlink
+            {
+                GpioPin = (TreeLight) pin
+            });
+        }
+        return retVal;
     }
 
     async Task Update()
     {
-    foreach (var l in Leds.Where(_ => _.IsOn))
-    {
-    Console.WriteLine($"Gpiopin {l.GpioPin} is {l.IsOn}");
-    }
-    await Http.PostAsync("/api/Tree/Update", Utilities.GetJsonAsStringContent(Leds.Where(_ => _.IsOn)));
+        foreach (var l in Leds.Where(_ => _.IsOn))
+        {
+            Console.WriteLine($"Gpiopin {l.GpioPin} is {l.IsOn}");
+        }
+        await Http.PostAsync("/api/Tree/Update", Utilities.GetJsonAsStringContent(Leds.Where(_ => _.IsOn)));
     }
 
     protected override void OnInit()
     {
-    Leds = CreateLeds();
+        Leds = CreateLeds();
     }
-    }
+}
