@@ -1,24 +1,23 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
-  </PropertyGroup>
-  <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="2.0.0" />
-  </ItemGroup>
-<ItemGroup>
-  <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-  <PackageReference Include="Ooui.Forms" Version="0.9.206" />
-  <PackageReference Include="Unosquare.Raspberry.IO" Version="0.13.0" />
-    <PackageReference Include="Bifrost.Devices.Gpio" Version="0.0.2" />
-    <PackageReference Include="Bifrost.Devices.Gpio.Abstractions" Version="0.0.1" />
-    <PackageReference Include="Bifrost.Devices.Gpio.Core" Version="0.0.1" />
-</ItemGroup>
-<ItemGroup>
-  <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="2.0.0" />
-</ItemGroup>
-<ItemGroup>
-  <ProjectReference Include="..\XmasTree.Common\XmasTree.Common.csproj" />
-</ItemGroup>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net8.0</TargetFramework>
+	</PropertyGroup>
+	<ItemGroup>
+		<DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="2.0.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Ooui.Forms" Version="0.14.16" />
+		<PackageReference Include="Unosquare.Raspberry.IO" Version="0.27.1" />
+		<PackageReference Include="Bifrost.Devices.Gpio" Version="0.0.2" />
+		<PackageReference Include="Bifrost.Devices.Gpio.Abstractions" Version="0.0.1" />
+		<PackageReference Include="Bifrost.Devices.Gpio.Core" Version="0.0.1" />
+	</ItemGroup>
+	<ItemGroup>
+		<DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="2.0.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\XmasTree.Common\XmasTree.Common.csproj" />
+	</ItemGroup>
 </Project>

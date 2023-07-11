@@ -1,0 +1,10 @@
+global using System.ComponentModel.DataAnnotations;
+global using System.Collections.Generic;
+global using Bifrost.Devices.Gpio.Abstractions;
+global using Bifrost.Devices.Gpio.Core;
+global using System.Diagnostics;
+global using System;
+global using System.Text;
+global using System.Net.Http;
+global using System.Linq;
+global using System.Text.Json;
