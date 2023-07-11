@@ -1,7 +1,79 @@
 ﻿@page "/"
+<div class="row">
+    <div class="col-lg-12 text-center">
+        <h1>Blazor tree</h1>
+    </div>
+</div>
+<div class="row ">
+    <div class="col-sm-12 text-center ">
+        <ul class="tg-list">
+            <li class="tg-list-item">
+                <h4>@TreeLight.STAR.GetDisplayName()</h4>
+                <input class="tgl tgl-light" id="@((int)TreeLight.STAR)" type="checkbox" @bind="_star.IsOn" />
+                <label class="tgl-btn" for="@((int)TreeLight.STAR)"></label>
+            </li>
+        </ul>
+    </div>
+</div>
+@{
+    var counter = 1;
+    for (var row = 0; row < 6; row++)
+    {
+        <div class="row">
+            @for (var column = 0; column < 4; column++)
+            {
+                var pin = GetLed(counter);
+                <div class="col-sm-3 ">
+                    <ul class="tg-list">
+                        <li class="tg-list-item">
+                            <h4>@(pin.GpioPin.GetDisplayName())</h4>
+                            <input class="tgl tgl-light" id="@((int)pin.GpioPin)" type="checkbox" @bind="pin.IsOn" />
+                            <label class="tgl-btn" for="@((int)pin.GpioPin)"></label>
+                        </li>
+                    </ul>
+                </div>
+                counter++;
+            }
+        </div>
+    }
+}
+<br />
+<div class="row">
+    <div class="col-sm-12 text-center">
+        <button class="btn btn-success" @onclick="Update">Update</button>
+    </div>
+</div>
 
-<PageTitle>Index</PageTitle>
+@code {
+    private List<LedBlink> _leds = new();
+    private LedBlink _star => _leds.First(_ => _.GpioPin == TreeLight.STAR);
+    private LedBlink GetLed(int counter) => _leds.First(_ => _.GpioPin == Utilities.GetLight(counter));
+    private Gpio _gpio = new();
 
-<h1>Hello, world!</h1>
+    protected override void OnInitialized()
+    {
+        _leds = CreateLeds();
+    }
 
-Welcome to your new app.
+    private List<LedBlink> CreateLeds()
+    {
+        var retVal = new List<LedBlink>();
+        foreach (var pin in Enum.GetValues(typeof(TreeLight)))
+        {
+            retVal.Add(new LedBlink
+                {
+                    GpioPin = (TreeLight)pin
+                });
+        }
+        return retVal;
+    }
+
+    private void Update()
+    {
+        _gpio.Off();
+        foreach (var l in _leds.Where(_ => _.IsOn))
+        {
+            _gpio.WritePin((int)l.GpioPin, l.IsOn);
+        }
+    }
+}

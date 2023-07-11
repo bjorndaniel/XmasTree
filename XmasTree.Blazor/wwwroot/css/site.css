@@ -67,35 +67,122 @@ a, .btn-link {
         content: "An error has occurred."
     }
 
-.loading-progress {
-    position: relative;
-    display: block;
-    width: 8rem;
-    height: 8rem;
-    margin: 20vh auto 1rem auto;
+
+/*Below from https://codepen.io/mallendeo/pen/eLIiG */
+html,
+body {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    min-height: 100%;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    font-family: sans-serif;
 }
 
-    .loading-progress circle {
-        fill: none;
-        stroke: #e0e0e0;
-        stroke-width: 0.6rem;
-        transform-origin: 50% 50%;
-        transform: rotate(-90deg);
+ul,
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.tg-list {
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.tg-list-item {
+    margin: 0 auto;
+}
+
+h2 {
+    color: #777;
+}
+
+h4 {
+    color: #999;
+}
+
+.tgl {
+    display: none;
+}
+
+    .tgl, .tgl:after, .tgl:before, .tgl *, .tgl *:after, .tgl *:before, .tgl + .tgl-btn {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
     }
 
-        .loading-progress circle:last-child {
-            stroke: #1b6ec2;
-            stroke-dasharray: calc(3.141 * var(--blazor-load-percentage, 0%) * 0.8), 500%;
-            transition: stroke-dasharray 0.05s ease-in-out;
+        .tgl::-moz-selection, .tgl:after::-moz-selection, .tgl:before::-moz-selection, .tgl *::-moz-selection, .tgl *:after::-moz-selection, .tgl *:before::-moz-selection, .tgl + .tgl-btn::-moz-selection {
+            background: none;
         }
 
-.loading-progress-text {
-    position: absolute;
-    text-align: center;
-    font-weight: bold;
-    inset: calc(20vh + 3.25rem) 0 auto 0.2rem;
+        .tgl::selection, .tgl:after::selection, .tgl:before::selection, .tgl *::selection, .tgl *:after::selection, .tgl *:before::selection, .tgl + .tgl-btn::selection {
+            background: none;
+        }
+
+        .tgl + .tgl-btn {
+            outline: 0;
+            display: block;
+            width: 4em;
+            height: 2em;
+            position: relative;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            margin: 0 auto;
+        }
+
+            .tgl + .tgl-btn:after, .tgl + .tgl-btn:before {
+                position: relative;
+                display: block;
+                content: "";
+                width: 50%;
+                height: 100%;
+            }
+
+            .tgl + .tgl-btn:after {
+                left: 0;
+            }
+
+            .tgl + .tgl-btn:before {
+                display: none;
+            }
+
+        .tgl:checked + .tgl-btn:after {
+            left: 50%;
+        }
+
+.tgl-light + .tgl-btn {
+    background: #f0f0f0;
+    border-radius: 2em;
+    padding: 2px;
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease;
 }
 
-    .loading-progress-text:after {
-        content: var(--blazor-load-percentage-text, "Loading");
+    .tgl-light + .tgl-btn:after {
+        border-radius: 50%;
+        background: #fff;
+        -webkit-transition: all .2s ease;
+        transition: all .2s ease;
     }
+
+.tgl-light:checked + .tgl-btn {
+    background: #9FD6AE;
+}
